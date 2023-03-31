@@ -14,11 +14,11 @@ router.route('/').get(async (req, res) => {
 router.route('/').post(async (req, res) => {
     const { name, prompt, photo } = req.body;
     try {
-        const photoUrl = await cloudinary.uploader.upload("https://img.vn/uploads/thuvien/singa-png-20220719150401Tdj1WAJFQr.png", {public_id: "faefaef"});
+        const photoUrl = await cloudinary.uploader.upload(photo, {public_id: "faefaef"});
         const newPost = await post.create({
             name: 'name',
             prompt: 'prompt',
-            photo: 'photo',
+            photo: photo,
         });
         res.status(200).json({ success: true, data: newPost });
     } catch (error) {
