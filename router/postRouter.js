@@ -12,9 +12,9 @@ router.route('/').get(async (req, res) => {
     res.json(posts)
 });
 router.route('/').post(async (req, res) => {
-    // const { name, prompt, photo } = req.body;
+    const { name, prompt, photo } = req.body;
     try {
-        const photoUrl = await cloudinary.uploader.upload('https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg', {public_id: "olympic_flag"});
+        const photoUrl = await cloudinary.uploader.upload('https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg', {public_id: name});
         const newPost = await post.create({
             name: 'name',
             prompt: 'prompt',
