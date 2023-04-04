@@ -18,7 +18,7 @@ router.route('/').post(async (req, res) => {
         const newPost = await post.create({
             name: 'name',
             prompt: 'prompt',
-            photo: photo,
+            photo: photoUrl.url,
         });
         res.status(200).json({ success: true, data: newPost });
     } catch (error) {
